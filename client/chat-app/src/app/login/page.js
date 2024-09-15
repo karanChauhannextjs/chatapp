@@ -1,7 +1,12 @@
+import LoginPage from "@/components/example/Login";
 import React from "react";
 
 const page = () => {
-  return <div>login page</div>;
+  return (
+    <div className="py-[50px]">
+      <LoginPage />
+    </div>
+  );
 };
 
 export default page;

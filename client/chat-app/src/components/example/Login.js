@@ -9,26 +9,25 @@ import {
   IconBrandOnlyfans,
 } from "@tabler/icons-react";
 import { useMutation } from "@tanstack/react-query";
-import { Signup } from "@/state/signup.api";
 
-export default function SignupFormDemo() {
+import { loginapi } from "@/state/login.api";
+
+export default function LoginPage() {
   // State to handle form data
   const [formData, setFormData] = useState({
     userName: "",
-    fullName: "",
+
     password: "",
-    confirmpassword: "",
-    gender: "",
   });
 
   // Signup mutation function
-  const signup = useMutation({
-    mutationFn: (data) => Signup(data),
+  const login = useMutation({
+    mutationFn: (data) => loginapi(data),
     onError: (err) => {
-      console.log(err, "Error during signup");
+      console.log(err, "Error during login");
     },
     onSuccess: (success) => {
-      console.log(success, "Signup successful");
+      console.log(success, "login successful");
     },
   });
 
@@ -45,7 +44,7 @@ export default function SignupFormDemo() {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Call the signup mutation with form data
-    signup.mutate(formData);
+    login.mutate(formData);
     console.log("Form submitted", formData);
   };
 
@@ -66,16 +65,6 @@ export default function SignupFormDemo() {
               onChange={handleInputChange}
             />
           </LabelInputContainer>
-          <LabelInputContainer>
-            <Label htmlFor="fullName">Full name</Label>
-            <Input
-              id="fullName"
-              placeholder="Durden"
-              type="text"
-              value={formData.fullName}
-              onChange={handleInputChange}
-            />
-          </LabelInputContainer>
         </div>
         <LabelInputContainer className="mb-4">
           <Label htmlFor="password">Password</Label>
@@ -87,32 +76,12 @@ export default function SignupFormDemo() {
             onChange={handleInputChange}
           />
         </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="confirmpassword">Confirm Password</Label>
-          <Input
-            id="confirmpassword"
-            placeholder="••••••••"
-            type="password"
-            value={formData.confirmpassword}
-            onChange={handleInputChange}
-          />
-        </LabelInputContainer>
-        <LabelInputContainer className="mb-4">
-          <Label htmlFor="gender">Gender</Label>
-          <Input
-            id="gender"
-            placeholder="gender"
-            type="text"
-            value={formData.gender}
-            onChange={handleInputChange}
-          />
-        </LabelInputContainer>
 
         <button
           className="bg-gradient-to-br relative group/btn from-black dark:from-zinc-900 dark:to-zinc-900 to-neutral-600 block dark:bg-zinc-800 w-full text-white rounded-md h-10 font-medium shadow-[0px_1px_0px_0px_#ffffff40_inset,0px_-1px_0px_0px_#ffffff40_inset] dark:shadow-[0px_1px_0px_0px_var(--zinc-800)_inset,0px_-1px_0px_0px_var(--zinc-800)_inset]"
           type="submit"
         >
-          Sign up &rarr;
+          Login &rarr;
           <BottomGradient />
         </button>
 

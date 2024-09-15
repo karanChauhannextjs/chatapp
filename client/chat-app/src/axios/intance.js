@@ -1,8 +1,7 @@
 // services/api.js
 import axios from "axios";
 import { signOut } from "next-auth/react";
-import { getCookie } from "./getCookie";
-import { getAccessToken } from "./getAccessToken";
+
 // const token = getItem("lToken");
 const api = axios.create({
   baseURL: "http://localhost:8000/api/v1/", // Replace with your API base URL
