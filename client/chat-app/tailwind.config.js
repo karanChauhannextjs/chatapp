@@ -12,6 +12,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        bgblack: "var(--blackbg)",
+        lightbg: "var(--lightbg)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
